@@ -10,13 +10,11 @@ df_health <- NHANESraw %>%
     HealthGen = trimws(HealthGen),
     HealthGen = dplyr::recode(
       HealthGen,
-      "Vgood" = "Very good",
-      "Verygood" = "Very good",
-      "very good" = "Very good"
+      "Vgood" = "Very Good"
     ),
     HealthGen = factor(
       HealthGen,
-      levels = c("Excellent", "Very good", "Good", "Fair", "Poor"),
+      levels = c("Excellent", "Very Good", "Good", "Fair", "Poor"),
       ordered = TRUE
     ),
     SleepTrouble = factor(SleepTrouble, levels = c("No", "Yes"))
@@ -41,6 +39,7 @@ sum_health <- df_health %>%
 scores <- seq_len(nrow(sum_health))
 trend  <- prop.trend.test(x = sum_health$n_yes, n = sum_health$n_total, score = scores)
 trend_p <- if (trend$p.value < 0.001) "p < 0.001" else sprintf("p = %.3f", trend$p.value)
+
 
 # --- Color palette ---
 fills <- c("#DDEAF7", "#C6DDF2", "#AFCFED", "#8DBAE5", "#6AA5DD")
@@ -80,3 +79,4 @@ ggplot(sum_health, aes(x = HealthGen, y = prop_yes, fill = HealthGen)) +
     axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 1, margin = margin(t = 6)),
     plot.margin = margin(8, 20, 12, 12)
   )
+ggsave("Figures/Figure 8.png", width = 10, height = 5, dpi = 96)
