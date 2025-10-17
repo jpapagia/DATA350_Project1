@@ -5,25 +5,75 @@ date: "2025-10-16"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+library(tidyverse)
+library(DescTools)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+raw_data <- read_csv("NHANESraw.csv")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Question 8 Code
+```{r}
+clean_data_question8 <- raw_data %>%
+  select(HealthGen, SleepTrouble)
+
+clean_data_question8 <- clean_data_question8 %>%
+  filter(!is.na(HealthGen) & !is.na(SleepTrouble))
+
+clean_data_question8 <- clean_data_question8 %>%
+  mutate(HealthGen = str_replace(HealthGen, "Vgood", "Very Good"))
+
+df_summary <- clean_data_question8 %>%
+  group_by(HealthGen) %>%
+  summarise(
+    YesProp = mean(SleepTrouble == "Yes"),
+    SE = sqrt(YesProp * (1 - YesProp) / n()),
+    CI_lower = YesProp - 1.96 * SE,
+    CI_upper = YesProp + 1.96 * SE
+  )
+
+df_summary <- df_summary %>%
+  mutate(HealthGen = factor(HealthGen, levels = c("Excellent", "Very Good", "Good", "Fair", "Poor")))
+
+sleep_trouble_by_health <- ggplot(df_summary, aes(x = HealthGen, y = YesProp)) +
+  geom_col(fill = "steelblue") +
+  geom_errorbar(aes(ymin = CI_lower, ymax = CI_upper), width = 0.2) +
+  labs(
+    x = "Reported General Health",
+    y = "Proportion that Reported Sleep Trouble",
+    title = "Proportion that Reported Sleep Trouble by Reported General Health (NHANES 2009-2011)\nError Bars are 95% CIs"
+  ) +
+  scale_y_continuous(limits = c(0,1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+sleep_trouble_by_health
+```
+
+```{r}
+clean_data_question8$SleepTrouble <- factor(
+  clean_data_question8$SleepTrouble,
+  levels = c("No", "Yes")
+)
+
+clean_data_question8$HealthGen <- factor(
+  clean_data_question8$HealthGen,
+  levels = c("Excellent", "Very Good", "Good", "Fair", "Poor"),
+  ordered = TRUE
+)
+
+contingency_table <- table(clean_data_question8$HealthGen, clean_data_question8$SleepTrouble)
+
+CochranArmitageTest(contingency_table, alternative = "one.sided")
+```
+
