@@ -1,7 +1,8 @@
 
 # Sleep Duration, Difficulty, and Health Correlates Among U.S. Adults (NHANES 2009–2011)
 
-![[cover.png]]
+![Cover Image](cover.png)
+
 
 This repository contains an exploratory data analysis (EDA) project examining the relationships between sleep duration, difficulty sleeping, and various health and lifestyle factors among U.S. adults.  
 
