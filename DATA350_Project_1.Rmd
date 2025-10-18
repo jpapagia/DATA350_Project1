@@ -128,13 +128,13 @@ ggplot(sleep_age, aes(x = AgeGroup, y = mean_sleep, color = SleepTrouble, group 
 
 <small>*Mean nightly sleep duration (±95% confidence intervals) by age group and self-reported trouble sleeping. Respondents who reported having trouble sleeping consistently averaged fewer hours of nightly rest across all age groups, with both groups showing a slight rebound in older adulthood (NHANES 2009–2011).*</small>
 
-As might be expected, people who do not report having sleep problems typically sleep for a lot longer than people who do. Among those without sleep issues, older adults report a longer sleep duration than younger people, which is an intriguing trend in this dataset. Younger participants typically sleep longer on average than older adults, but the relationship is reversed among those who have reported having sleep issues.
+As might be expected, people who do not report having sleep problems typically sleep longer per night than people who reported difficulty. Among those without reported sleep difficulty, older adults disclose a larger average sleep duration per night than the younger participants. However, while the younger participants typically sleep longer on average per night than older adults, but the relationship is reversed among those who have reported having sleep issues.
 
-This discrepancy may be the result of lifestyle and general health factors. While older adults with sleep problems may experience comorbid health conditions that further disrupt sleep, younger people with reported sleep issues are typically healthier and less impacted by chronic physical conditions that can further disrupt rest. On the other hand, compared to younger or middle-aged adults with busier schedules, older people without sleep issues might benefit from having more free time for relaxation. People in their middle years seem to get the least amount of sleep overall, most likely as a result of a combination of time constraints and health issues.
+This discrepancy may be the result of lifestyle and general health factors. While older adults with sleep problems may experience comorbid health conditions that further disrupt sleep, younger participants with reported sleep trouble are typically healthier and less impacted by chronic physical conditions caused by age, that can further disrupt rest. On the other hand, compared to younger or middle-aged adults with busier schedules, older people (65 years old or higher) without reported sleep disturbances may benefit from having more off time due to retirement, for example. Participants in their middle years (45-64 years old) received the least amount of sleep per night, which may be the result of potential time constraints and health issues.
 
 **QUESTION 2**
 
-Similarly, the second also demonstrated to be what was expected initially. Using common knowledge of how mental and physical health affects sleep, it was deduced that there should be a positive correlation between reported general health and reported sleep trouble. The visualization and analysis is shown below.
+Similarly, the second question also demonstrated to be what was expected initially. Assuming mental and physical health affects sleep, it was deduced that there should exist a positive correlation between a particiapant's reported general health and reported sleep trouble. The visualization and analysis is shown below.
 
 ```{r fig8_sleep_health, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "<b>Figure 2. Reported Sleep Trouble by Self-Reported General Health (NHANES 2009–2011)</b>", out.width='100%', fig.width=8.8, fig.height=5.8}
 
@@ -184,15 +184,15 @@ sum_health <- df_health %>%
   ) %>%
   arrange(HealthGen)
 
-# --- Cochran–Armitage trend test ---
+# Cochran–Armitage trend test
 scores <- seq_len(nrow(sum_health))
 trend  <- prop.trend.test(x = sum_health$n_yes, n = sum_health$n_total, score = scores)
 trend_p <- if (trend$p.value < 0.001) "p < 0.001" else sprintf("p = %.3f", trend$p.value)
 
-# --- Color palette ---
+# Color palette 
 fills <- c("#DDEAF7", "#C6DDF2", "#AFCFED", "#8DBAE5", "#6AA5DD")
 
-# --- Polished plot ---
+# Polished plot
 ggplot(sum_health, aes(x = HealthGen, y = prop_yes, fill = HealthGen)) +
   geom_col(width = 0.55, color = NA) +
   geom_errorbar(aes(ymin = lo, ymax = hi),
@@ -200,7 +200,7 @@ ggplot(sum_health, aes(x = HealthGen, y = prop_yes, fill = HealthGen)) +
   # percentages slightly above each bar
   geom_text(
     aes(label = percent(prop_yes, accuracy = 1)),
-    vjust = -3,
+    vjust = -5,
     size = 3.6,
     fontface = "bold",
     color = "grey20"
@@ -211,7 +211,7 @@ ggplot(sum_health, aes(x = HealthGen, y = prop_yes, fill = HealthGen)) +
     breaks = seq(0, 0.6, 0.1),
     expand = expansion(mult = c(0, 0.05))
   ) +
-  coord_cartesian(ylim = c(0, 0.60), clip = "off") +   # ← decreased to 60%
+  coord_cartesian(ylim = c(0, 0.60), clip = "off") +   # decreased to 60%
   labs(
     title = "Reported Sleep Trouble by Self-Reported General Health (NHANES 2009–2011)",
     subtitle = paste0("Bars show % reporting sleep trouble; 95% CIs. Cochran–Armitage trend test: ", trend_p),
@@ -232,11 +232,11 @@ ggplot(sum_health, aes(x = HealthGen, y = prop_yes, fill = HealthGen)) +
 
 <small>*Percent that reported Sleep Trouble for each category of Self-Reported General Health. Error bars are 95% confidence intervals (NHANES 2009–2011).*</small>
 
-It can be seen that among people who have reported worse general health have a higher percentage of reported sleep trouble. To check if we have statistically significant evidence to believe this, we perform the following statistical test.
+It can be seen that among people who have reported worse general health have a higher percentage of reported sleep trouble. To verify statistical significance, the following statistical test was performed.
 
 **Statistical Test**: Chi-Squared Test for Trend (Cochran–Armitage trend test)
 
-**Hypotheses:**
+**Hypothesis:**
 
 H₀: There is no linear trend in reported sleep trouble percentage across reported general health categories.
 
@@ -329,7 +329,7 @@ ggplot(gender_age, aes(x = AgeGroup, y = p_hat, fill = Gender)) +
 
 <small>*Proportion of reported trouble sleeping across different age groups for Males and Females. Error bars are 95% confidence intervals (NHANES 2009–2011).*</small>
 
-Based on Figure 3, females across all age groups exhibited a higher proportion of reported trouble sleeping compared to males. To determine whether these differences are statistically significant, a series of proportional z-tests were conducted for each age group separately at a significance level of 0.05. The null hypothesis states that females and males have equal proportions of reported sleep trouble, while the alternative hypothesis posits that females have a higher proportion of reported sleep trouble than males. The results of these tests are summarized in the table below.:
+Based on Figure 3, females across all age groups exhibited a higher proportion of reported trouble sleeping compared to males. To determine whether these differences are statistically significant, a series of proportional z-tests were conducted for each age group separately at a significance level of 0.05. The null hypothesis states that females and males have equal proportions of reported sleep trouble, while the alternative hypothesis posits that females have a higher proportion of reported sleep trouble than males. The results of these tests are summarized in the table below:
 
 |               |             |
 |---------------|-------------|
@@ -342,7 +342,7 @@ Based on Figure 3, females across all age groups exhibited a higher proportion o
 | 65-74         | 0.0000101   |
 | 75+           | 0.00297     |
 
-The findings showed that all proportional z-tests had p-values that were significantly below the significance level of 0.05. Consequently, across all age groups, there is statistically significant evidence to suggest that women reported a higher percentage of sleep difficulties than men.
+The findings demonstrated that all proportional z-tests had p-values that were significantly below the significance threshold level of 0.05. Consequently, across all age groups, there is statistically significant evidence to suggest that women reported a higher percentage of sleep difficulties than men.
 
 It is crucial to take into consideration that the dependent variable does not reflect objectively measured sleep duration or quality, but rather self-reported sleep issues. Therefore, even though the analysis shows that women are more likely to report having trouble sleeping, this does not necessarily mean that they actually have more sleep problems compared to their male counterparts. These results might be the result of disparities in perceptions, health awareness, or symptom disclosure willingness.
 
@@ -414,7 +414,7 @@ ggplot(dat, aes(x = SleepHrsNight, color = Lifestyle)) +
 
 <small>*Kernel density plot displaying the distribution of nightly sleep duration among adult participants aged 21 years or older, grouped by lifestyle category (smoker only, drinker only, both, or neither). The normalized probability density function is represented by each curve, with vertical lines denoting the average amount of sleep for each group.  In contrast to non-smokers and non-drinkers, smokers and drinkers exhibit wider and more irregular distributions, suggesting greater variability in sleep patterns, even though mean values are similar across lifestyles (NHANES 2009–2011).*</small>
 
-Compared to drinkers or people who do neither, the distribution for smokers is noticably smaller, suggesting that the majority of smokers sleep roughly seven hours every night with less variation among the group. On the other hand, there is more variation among those who reported drinking, with noticeable peaks occurring at six, seven, and eight hours of sleep. Compared to smokers, even those who said they did not smoke or drink had more varied sleep duration.
+Compared to drinkers or people who do neither, the distribution for smokers is noticeably smaller, suggesting that the majority of smokers sleep roughly seven hours every night with less variation among the group. On the other hand, there is more variation among those who reported drinking, with noticeable peaks occurring at six, seven, and eight hours of sleep. Compared to smokers, even those who said they did not smoke or drink had more varied sleep duration.
 
 These results were unexpected since it had been assumed that poorer sleep habits were associated with unhealthier lifestyles. This result emphasizes a crucial point: irregularities or bad habits in one area of life do not always indicate unhealthy behavior in another. Although this is still purely conjectural, it is plausible that smokers in this instance follow more regimented routines, which may be connected to the habitual character of their behavior.\
 
@@ -422,7 +422,7 @@ These results were unexpected since it had been assumed that poorer sleep habits
 
 The results for the next questions were a bit surprising. For Question 5 in particular, it was expected that physical activity positively affects sleep quantity and quality. However, the box plot below seems to indicate that there is actually no correlation between them.
 
-```{r figure6-physactivity-vs-sleep, fig.cap="<b>Figure 5: Reported Physical Activity vs. Sleep Duration</b>", fig.width=7.5, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE}
+```{r figure6-physactivity-vs-sleep, fig.cap="<b>Figure 5. Reported Physical Activity vs. Sleep Duration</b>", fig.width=7.5, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE}
 
 # ============================================================
 # Figure 5: Reported Physical Activity vs. Sleep Duration Boxplot
@@ -655,7 +655,9 @@ All things considered, even though these restrictions limit the accuracy and gen
 
 ## **Conclusion**
 
-Despite growing public awareness, many aspects of how sleep interacts with behavior and self-perceived health remain unclear. For instance, people may have comparable sleep schedules but greatly differ in their degrees of well-being and rest. The importance of looking at both hours slept and self-reported difficulty sleeping is highlighted by the distinction between sleep quantity and quality. It’s also important to keep in mind that causal relationships do not always go both ways. For instance, it’s heavily implied in an article written for the Cleveland Clinic that sleep has a significant effect on blood pressure. However, the results of this project indicate that blood pressure has a limited effect on the number of hours a person sleeps. The main takeaway of this project is to never take common sense for granted. It’s always better to test theories, no matter how obvious they may seem at first, because the results may be different than expected. A good test may include certain statistical methods, but an even great test is to simply visualize the theory by plotting a dataset. As the famous saying goes, “a picture is worth a thousand words”.
+Despite growing public awareness, many aspects of how sleep interacts with behavior and self-perceived health remain unclear. For instance, people may have comparable sleep schedules but greatly differ in their degrees of wellbeing and rest. The importance of looking at both hours slept and self-reported difficulty sleeping is highlighted by the distinction between sleep quantity and quality. This distinction is especially important to remember because confusing sleep quality and quantity can lead to dangerous assumptions. For example, one of the results indicates that screen time and hours of sleep do not correlate. If taken at face value, people may assume that sleep and screen time do not correlate. However, this assumption is false and dangerous because there are a multitude of studies that show how blue light negatively affects melatonin production. Sleep quantity is easier to measure, but that doesn’t mean it should be the only value used to explain sleep. After all, sleep is a mysterious phenomenon that to this day still stumps the scientific community. Sleep quality is arguably just as, if not more, important than sleep quantity. It cannot be ignored simply because some researchers want to cut corners.   
+
+In addition, it’s important to keep in mind that causal relationships don’t always go both ways. For instance, it’s heavily implied in an article written for the Cleveland Clinic that sleep has a significant effect on blood pressure. However, the results of this project indicate that blood pressure has a limited effect on the number of hours a person sleeps. The main takeaway of this project is to never take common sense for granted. It’s always better to test theories, no matter how obvious they may seem at first, because the results may be different than expected. A good test may include certain statistical methods, but an even great test is to simply visualize the theory by plotting a dataset. As the famous saying goes, “a picture is worth a thousand words”. 
 
 ## **Reproducibility and Code Availability**
 
@@ -861,7 +863,7 @@ ggplot(race_age, aes(x = AgeGroup, y = p_hat, fill = RaceMerged)) +
 
 **How does sleep duration vary with BMI categories across different genders?**
 
-```{r figure5-bmi-vs-sleep, fig.cap="<b>Figure 10: Sleep Duration vs Body Mass Index (BMI) by Gender</b>", fig.width=8, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE}
+```{r figure5-bmi-vs-sleep, fig.cap="<b>Figure 10. Sleep Duration vs Body Mass Index (BMI) by Gender</b>", fig.width=8, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE}
 
 # ============================================================
 # Figure 10: Sleep Duration vs Body Mass Index (BMI) by Gender
