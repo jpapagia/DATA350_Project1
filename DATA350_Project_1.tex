@@ -198,7 +198,7 @@ Appendix.
 \subsection{\texorpdfstring{\textbf{Results and
 Visualizations}}{Results and Visualizations}}\label{results-and-visualizations}
 
-\textbf{QUESTION~ 1}
+\textbf{QUESTION 1}
 
 Out of the six guided questions, three of them were ones that matched
 the initial assumptions for this project. The other four were somewhat
@@ -231,7 +231,7 @@ older people who do not have to deal with sleep problems are likely to
 have more time on their hands than younger people to sleep in, so if
 they can sleep for long they likely will. As for middle aged people,
 they have health problems and little time to deal with, which is why
-they sleep the least.~
+they sleep the least.
 
 \textbf{QUESTION 5}
 
@@ -329,7 +329,7 @@ knowledge and perspective of the person reporting rather than simply the
 sleeping problems themselves. It's possible that because of societal
 standards, the men in the survey may not have felt as comfortable
 reporting their potential physical and mental issues. This is supported
-by an article~ titled ``5 Reasons Men Avoid Going to the Doctor'' on the
+by an article titled ``5 Reasons Men Avoid Going to the Doctor'' on the
 website Nuffield Health, where it's stated that ``65\% of men say they
 avoid seeking medical help for as long as possible when they're
 unwell.'' (Naseem, 2024). This tendency of men to avoid reporting their
@@ -369,14 +369,26 @@ However, these surprising results bring about an important lesson to
 take note of: just because a habit is unhealthy doesn't mean that it
 correlates to every other lifestyle choice being unhealthy. In fact, in
 this case, it's possible that smokers follow a tighter routine than
-non-smokers due to their addiction. That's just speculation, though.~\\
+non-smokers due to their addiction. That's just speculation, though.\\
 
 \textbf{QUESTION 6}
 
 The results for the next questions were a bit surprising. For question 6
 in particular, it was expected that physical activity positively affects
 sleep quantity and quality. However, the box plot below seems to
-indicate that there is actually no correlation.~
+indicate that there is actually no correlation.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{DATA350_Project_1_files/figure-latex/figure6-physactivity-vs-sleep-1.pdf}}
+\caption{Reported Physical Activity vs.~Sleep Duration}
+\end{figure}
+
+\emph{Boxplot comparing average hours of sleep reported among adults who
+claimed to be physically active versus those who did not. The mean sleep
+durations (red lines) are nearly identical between groups, suggesting
+that reported physical activity level does not substantially influence
+total sleep time (NHANES 2009--2011).}
 
 These results are interesting because many studies indicate that more
 exercise results in better sleep. However, there are a few things to
@@ -389,16 +401,16 @@ physical activity has on sleep. Sleep is the cause of a lot of different
 things, physical prowess being one of them. So a good takeaway from
 these results could be that just because one thing doesn't have a
 significant effect on something else, doesn't mean the reverse can't be
-true.~\\
+true.\\
 
 \textbf{QUESTION 4}
 
 The results to this question was possibly the most surprising out of all
-the results. The assumption was that screen usage affects sleep.~ This
-is because most devices emit blue light, which diminishes the amount of
+the results. The assumption was that screen usage affects sleep. This is
+because most devices emit blue light, which diminishes the amount of
 melatonin in the body. Melatonin, for reference, helps regulate the
 sleeping cycle and aids the body in falling asleep. The visualization
-below tells a different story, however.~
+below tells a different story, however.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{DATA350_Project_1_files/figure-latex/fig7_screen_sleep-1} \caption{Figure 7. Daily Screen Time (Computer + TV) vs. Sleep Duration}\label{fig:fig7_screen_sleep}
@@ -422,7 +434,7 @@ sleep quality. So it's still very much possible that screens affect
 sleep quality, but don't affect sleep quantity as much. The results are
 still surprising, because one would expect people who use their phones
 often, especially those who have a phone addiction, to put off sleep in
-order to stay on their phones.~
+order to stay on their phones.
 
 \textbf{Question 3}
 
@@ -450,6 +462,32 @@ lines only explain less than 1\% of the variance and summarize a very
 slight downward trend, suggesting that blood pressure is not a reliable
 indicator of sleep duration.
 
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 0\tabcolsep) * \real{1.0042}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{minipage}[t]{\linewidth}\raggedright
+\textbf{Statistical Test:} Pearson's correlation and simple linear
+regression were performed for each blood pressure type.
+
+\begin{itemize}
+\item
+  Diastolic (mmHg): r = −0.092, p \textless{} 0.001, n = 11,773, slope =
+  −0.011 hours/mmHg (≈ −0.66 min/mmHg), R² = 0.008
+\item
+  Systolic (mmHg): r = −0.029, p = 0.002, n = 11,773, slope = −0.0023
+  hours/mmHg (≈ −0.14 min/mmHg), R² = 0.001
+\end{itemize}
+
+Although both tests reached statistical significance due to the large
+sample size, their effect sizes were negligible in practical terms. This
+suggests that blood pressure explains less than 1\% of the variance in
+reported sleep duration.
+\end{minipage} \\
+\end{longtable}
+
 The expectation was that both measurements of blood pressure would have
 a negative effect on sleep (so the higher the blood pressure, the fewer
 the hours of sleep). However, as can be seen in the scatterplot above,
@@ -466,7 +504,7 @@ they sleep. Most people are aware of the benefits of sleeping for a full
 pressure isn't going to stop someone from deciding they need to get to
 bed earlier; that's a decision. It would be more interesting to explore
 how sleep affects blood pressure, since blood pressure isn't something
-people can directly control like the decision of when to go to bed.~\\
+people can directly control like the decision of when to go to bed.\\
 
 \subsection{\texorpdfstring{\textbf{Limitations and Sources of
 Error}}{Limitations and Sources of Error}}\label{limitations-and-sources-of-error}
@@ -506,7 +544,7 @@ deduced. Results may also be impacted by unmeasured confounding factors
 such as stress, occupation, or long-term medical conditions. Finally,
 human judgment in establishing thresholds, exclusions, and groupings
 invariably introduces some subjectivity, even in the face of efforts to
-maintain objectivity during data cleaning and interpretation.~
+maintain objectivity during data cleaning and interpretation.
 
 All things considered, even though these restrictions limit the accuracy
 and generalizability of some findings, the findings nevertheless provide
@@ -598,6 +636,77 @@ elevated into older adulthood, with White respondents generally
 reporting the highest rates across most age categories (NHANES
 2009--2011).}
 
+\subsubsection{\texorpdfstring{\textbf{How does sleep duration vary with
+BMI categories across different
+genders?}}{How does sleep duration vary with BMI categories across different genders?}}\label{how-does-sleep-duration-vary-with-bmi-categories-across-different-genders}
+
+```\{r\{r figure5-bmi-vs-sleep, fig.cap=``Sleep Duration vs Body Mass
+Index (BMI) by Gender'', fig.width=8, fig.height=5, echo=FALSE,
+warning=FALSE, message=FALSE\}
+
+\section{============================================================}\label{section}
+
+\section{Figure 5: Sleep Duration vs Body Mass Index (BMI) by
+Gender}\label{figure-5-sleep-duration-vs-body-mass-index-bmi-by-gender}
+
+\section{Script: Figure 5.R}\label{script-figure-5.r}
+
+\section{Author: Alexandra Julka}\label{author-alexandra-julka}
+
+\section{Modified: 2025-10-17}\label{modified-2025-10-17}
+
+\section{============================================================}\label{section-1}
+
+library(dplyr) library(ggplot2) library(forcats)
+
+NHANESraw \textless- read.csv(``NHANESraw.csv'')
+
+df\_bmi \textless- NHANESraw \%\textgreater\% select(SleepHrsNight,
+BMI\_WHO, Gender) \%\textgreater\% filter(!is.na(SleepHrsNight),
+!is.na(BMI\_WHO), !is.na(Gender)) \%\textgreater\% mutate( SleepHrsNight
+= as.numeric(SleepHrsNight), BMI\_WHO = trimws(as.character(BMI\_WHO)),
+\# use two-line axis labels for clarity BMI\_WHO = recode( BMI\_WHO,
+``12.0\_18.5'' = ``Underweight\n(\textless18.5)'', ``18.5\_to\_24.9'' =
+``Normal\n(18.5--24.9)'', ``25.0\_to\_29.9'' =
+``Overweight\n(25--29.9)'', ``30.0\_plus'' = ``Obese\n(≥30)'' ),
+BMI\_WHO = factor( BMI\_WHO, levels = c(
+``Underweight\n(\textless18.5)'', ``Normal\n(18.5--24.9)'',
+``Overweight\n(25--29.9)'', ``Obese\n(≥30)'' ), ordered = TRUE ), Gender
+= factor(tolower(Gender), levels = c(``female'',``male''), labels =
+c(``Female'',``Male'')) ) \%\textgreater\% filter(SleepHrsNight
+\textgreater= 2, SleepHrsNight \textless= 12)
+
+\section{Plot}\label{plot}
+
+fig5\_clean \textless- ggplot(df\_bmi, aes(x = BMI\_WHO, y =
+SleepHrsNight, fill = Gender)) + geom\_violin(trim = TRUE, alpha = 0.55,
+color = ``grey40'', width = 0.85) + geom\_boxplot(width = 0.12,
+outlier.shape = 16, outlier.size = 1.2, fill = ``white'', color =
+``grey25'') + stat\_summary(fun = mean, geom = ``point'', shape = 21,
+size = 2.3, fill = ``white'', color = ``black'') +
+facet\_wrap(\textasciitilde{} Gender, nrow = 1) +
+scale\_fill\_manual(values = c(``Female'' = ``\#F4A7B9'', ``Male'' =
+``\#A7C7E7''), name = ``Gender'') + scale\_y\_continuous(breaks = 2:12,
+limits = c(2, 12)) + labs( title = ``BMI vs Hours of Sleep'', subtitle =
+``Violin = distribution; box = IQR; white dot = mean (NHANES
+2009--2011)'', x = ``BMI Category (WHO Classification)'', y = ``Hours of
+Sleep per Night'' ) + theme\_minimal(base\_size = 13) + theme(
+panel.grid.minor = element\_blank(), plot.title.position = ``plot'',
+strip.text = element\_text(face = ``bold'', size = 12), axis.text.x =
+element\_text(size = 11, vjust = 1.2, lineheight = 1.1), axis.title.x =
+element\_text(margin = margin(t = 10)), plot.margin = margin(10, 15, 15,
+15) )
+
+fig5\_clean
+
+```
+
+\emph{Average nightly sleep hours across BMI categories, separated by
+gender. Each violin represents the distribution of self-reported sleep
+duration within a BMI group, with the box showing the interquartile
+range and the white dot marking the mean. Data from NHANES
+(2009--2011).}
+
 \subsection{\texorpdfstring{\textbf{References}}{References}}\label{references}
 
 \begin{itemize}
@@ -621,7 +730,7 @@ reporting the highest rates across most age categories (NHANES
 \item
   Fogoros, R. (2010, October 14). Systolic and Diastolic Blood Pressure.
   Verywell Health; Verywellhealth.
-  \url{https://www.verywellhealth.com/systolic-and-diastolic-blood-pressure-1746075}~
+  \url{https://www.verywellhealth.com/systolic-and-diastolic-blood-pressure-1746075}
 \item
   Itani, O., Jike, M., Watanabe, N., \& Kaneita, Y. (2017). Short sleep
   duration and health outcomes: A systematic review, meta-analysis, and
@@ -635,7 +744,7 @@ reporting the highest rates across most age categories (NHANES
 \item
   Naseem, A. (2024, May 22). 5 reasons men avoid going to the doctor
   \textbar{} Nuffield Health. Www.nuffieldhealth.com.
-  \url{https://www.nuffieldhealth.com/article/5-reasons-men-avoid-going-to-the-doctor}~
+  \url{https://www.nuffieldhealth.com/article/5-reasons-men-avoid-going-to-the-doctor}
 \end{itemize}
 
 \end{document}

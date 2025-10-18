@@ -58,13 +58,13 @@ The `Figures/` directory contains:
 
 - Centers for Disease Control and Prevention (CDC). (2013). National Health and Nutrition Examination Survey: Analytic guidelines, 2011–2012. U.S. Department of Health and Human Services. https://www.cdc.gov/nchs/nhanes
 
-- Fogoros, R. (2010, October 14). Systolic and Diastolic Blood Pressure. Verywell Health; Verywellhealth. https://www.verywellhealth.com/systolic-and-diastolic-blood-pressure-1746075 
+- Fogoros, R. (2010, October 14). Systolic and Diastolic Blood Pressure. Verywell Health; Verywellhealth. https://www.verywellhealth.com/systolic-and-diastolic-blood-pressure-1746075 
 
 - Itani, O., Jike, M., Watanabe, N., & Kaneita, Y. (2017). Short sleep duration and health outcomes: A systematic review, meta-analysis, and meta-regression. Sleep Medicine, 32, 246–256. https://doi.org/10.1016/j.sleep.2016.08.006
 
 - MedPsych Health. (n.d.). Woman sleeping peacefully in bed [Photograph]. MedPsych Health. https://www.medpsychhealth.com/ wp-content/uploads/shutterstock_1427337869-1440x810.jpg
 
-- Naseem, A. (2024, May 22). 5 reasons men avoid going to the doctor | Nuffield Health. Www.nuffieldhealth.com. https://www.nuffieldhealth.com/article/5-reasons-men-avoid-going-to-the-doctor 
+- Naseem, A. (2024, May 22). 5 reasons men avoid going to the doctor | Nuffield Health. Www.nuffieldhealth.com. https://www.nuffieldhealth.com/article/5-reasons-men-avoid-going-to-the-doctor 
 
 
 
