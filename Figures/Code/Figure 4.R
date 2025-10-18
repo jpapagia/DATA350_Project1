@@ -1,6 +1,6 @@
 # ============================================================
 # Figure 4: Average Sleep Hours vs Diastolic and Systolic
-# Script: Figure 3(1).R
+# Script: Figure 4.R
 # Author: Alexandra Julka, Yianni Papagiannopoulos
 # Modified: 2025-10-17
 # ============================================================
