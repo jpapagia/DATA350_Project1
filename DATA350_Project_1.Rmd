@@ -134,7 +134,7 @@ This discrepancy may be the result of lifestyle and general health factors. Whil
 
 **QUESTION 2**
 
-Similarly, the second question also demonstrated to be what was expected initially. Assuming mental and physical health affects sleep, it was deduced that there should exist a positive correlation between a particiapant's reported general health and reported sleep trouble. The visualization and analysis is shown below.
+Similarly, the second question also demonstrated to be what was expected initially. Assuming mental and physical health affects sleep, it was deduced that there should exist a positive correlation between a participant's reported general health and reported sleep trouble. The visualization and analysis is shown below.
 
 ```{r fig8_sleep_health, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "<b>Figure 2. Reported Sleep Trouble by Self-Reported General Health (NHANES 2009–2011)</b>", out.width='100%', fig.width=8.8, fig.height=5.8}
 
@@ -329,7 +329,7 @@ ggplot(gender_age, aes(x = AgeGroup, y = p_hat, fill = Gender)) +
 
 <small>*Proportion of reported trouble sleeping across different age groups for Males and Females. Error bars are 95% confidence intervals (NHANES 2009–2011).*</small>
 
-Based on Figure 3, females across all age groups exhibited a higher proportion of reported trouble sleeping compared to males. To determine whether these differences are statistically significant, a series of proportional z-tests were conducted for each age group separately at a significance level of 0.05. The null hypothesis states that females and males have equal proportions of reported sleep trouble, while the alternative hypothesis posits that females have a higher proportion of reported sleep trouble than males. The results of these tests are summarized in the table below:
+Based on Figure 3, females across all age groups exhibited a higher proportion of reported trouble sleeping compared to males. To determine whether these differences are statistically significant, a series of two-proportion z-tests were conducted for each age group separately at a significance level of 0.05. The null hypothesis states that females and males have equal proportions of reported sleep trouble, while the alternative hypothesis posits that females have a higher proportion of reported sleep trouble than males. The results of these tests are summarized in the table below:
 
 |               |             |
 |---------------|-------------|
